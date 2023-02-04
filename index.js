@@ -14,13 +14,7 @@ const originalFlavors = [
   "Chocolate Mint",
   "Chocolate Ribbon",
   "Coffee",
-  "Coffee Candy",
-  "Date Nut",
-  "Eggnog",
-  "French Vanilla",
-  "Green Mint Stick",
-  "Lemon Crisp",
-  "Lemon Custard",
+  "Cofon Custard",
   "Lemon Sherbet",
   "Maple Nut",
   "Orange Sherbet",
@@ -31,7 +25,14 @@ const originalFlavors = [
   "Raspberry Sherbet",
   "Rocky Road",
   "Strawberry",
-  "Vanilla",
+  "Vanilla", 
+  "fee Candy",
+  "Date Nut",
+  "Eggnog",
+  "French Vanilla",
+  "Green Mint Stick",
+  "Lemon Crisp",
+  "Lem",
   "Vanilla Burnt Almond"
 ]
 
@@ -46,10 +47,10 @@ Use the copy function below to do the following:
 */
 
 
-function copy(/*your code here*/){
-  /*your code here*/
+function copy(flavors){
+  return [...flavors];
 }
-
+// console.log(copy(originalFlavors));
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -63,10 +64,14 @@ For Example: is31Flavors(originalFlavors) will return true if your code is worki
 */
 
 
-function is31Flavors(/*your code here*/){
-  /*your code here*/
+function is31Flavors(accurate){
+  if(accurate.length === 31){
+    return true;
+}else{
+  return false;
+}
  }
-
+// console.log(is31Flavors(originalFlavors));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -82,10 +87,12 @@ Use the addFlavor function below to do the following:
 */
 
 
-function addFlavor(/*your code here*/){
-  /*your code here*/
+function addFlavor(flavors, newFlavor){
+  flavors.unshift(newFlavor);
+  return flavors; 
  }
 
+// console.log(addFlavor(originalFlavors, "Rainbow Sherbert"));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -100,10 +107,11 @@ Use the removeLastFlavor function below to do the following:
 */
 
 
-function removeLastFlavor(/*your code here*/){
- /*your code here*/
+function removeLastFlavor(erase){
+  erase.pop();
+  return erase;
 }
-
+// console.log(removeLastFlavor(originalFlavors));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -118,10 +126,10 @@ Use the getFlavorByIndex function below to do the following:
 */
 
 
-function getFlavorByIndex(/*your code here*/){
-  /*your code here*/
+function getFlavorByIndex(flavors, num){
+  return flavors[num];
 }
-
+// console.log(getFlavorByIndex(originalFlavors, 2));
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -138,10 +146,15 @@ Use the removeFlavorByName function below to do the following:
   HINT: You can use .splice() for this
 */
 
-function removeFlavorByName(/*your code here*/){
-  /*your code here*/
+function removeFlavorByName(arr, flavor){
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i] === flavor){
+      arr.splice(i, 1);
+    }
+  }
+  return arr;  
 }
-
+// console.log(removeFlavorByName(originalFlavors, "Rocky Road"));
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -163,10 +176,16 @@ Use the filterByWord function below to do the following:
 */
 
 
-function filterByWord(/*your code here*/){
-  /*your code here*/
+function filterByWord(arr, flavor){
+  let filteredArray = [];
+  for(let i = 0; i < arr.length; i++){
+    if(arr[i].includes(flavor)){
+      filteredArray.push(arr[i]);
+    }
+  }
+  return filteredArray;
 }
-
+// console.log(filterByWord(originalFlavors, 'Chocolate'));
 
 
 /* 💪💪💪💪💪🧁🍦🍨 STRETCH 🍨🍦🍫💪💪💪💪💪*/ 
@@ -181,10 +200,16 @@ Use the getAverageWordLength function below to do the following:
   For example: getAverageWordLength(originalFlavors) should return a number between 0 and 3.     
 */
 
-function getAverageWordLength(/*code here*/){
-  /*code here*/
+function getAverageWordLength(flavors){
+  let map = {};
+let wordCount = 0;
+  for (let i = 0; i < flavors.length; i++){
+    const wordArray = flavors[i].split(" ")
+    wordCount += wordArray.length
+  }
+  return wordCount / flavors.length  
 }
-
+console.log(getAverageWordLength(originalFlavors));
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪
 Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors 
